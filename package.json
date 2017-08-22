@@ -1,0 +1,39 @@
+{
+  "name": "opetstudioReactnative",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "start-web": "PORT=3006 react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test --env=jsdom",
+    "eject-web": "react-scripts eject",
+    "electron": "electron ."
+  },
+  "dependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.47.2",
+    "electron": "~1.6.2",
+    "object-assign": "^4.1.1",
+    "react-dom": "16.0.0-alpha.12",
+    "react-hot-loader": "^1.3.1",
+    "react-native-router-flux": "^4.0.0-beta.18",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "3.0.1",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.12",
+    "react-scripts": "^1.0.11"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "main": "src/electron-starter.js",
+  "author": "opetstudio",
+  "license": "MIT"
+}
