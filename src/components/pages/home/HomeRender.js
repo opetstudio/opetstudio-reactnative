@@ -1,18 +1,21 @@
 'use strict';
 import React from 'react';
 // import Screen from './Screen';
-import { Link } from 'react-router-dom';
+
+import Header from '../../includes/Header';
+import Sidebar from '../../includes/Sidebar';
+import Footer from '../../includes/Footer';
 // const logo = require('../img/rayasem-logo-color.png');
 
 export default function () {
   return (
-    <div style={styles.content}>
-      <div>
-        <span>Home Page Desktop/Web</span>
+    <div>
+      <Header />
+      <Sidebar />
+      <div style={styles.content}>
+          <span>Home Page Desktop/Web</span>
       </div>
-      <div>
-        <Link to={'/about'}>About</Link>
-      </div>
+      <Footer />
     </div>
   );
 }
