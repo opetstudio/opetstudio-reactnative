@@ -1,3 +1,10 @@
 {
-  "extends" : "rallycoding"
+  "extends" : "rallycoding",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+      "camelcase": 0,
+      "no-underscore-dangle": 0
+  }
 }

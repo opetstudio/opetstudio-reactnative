@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, HashRouter } from 'react-router-dom';
 
-import Home from './components/Home';
-import About from './components/About';
+import Home from './components/pages/home/Home';
+import About from './components/pages/about/About';
 
 
 class RouterWeb extends Component {

@@ -1,9 +1,9 @@
 'use strict';
 
-import { Component } from 'react';
 import Render from './HomeRender';
+import Base from './HomeBase';
 
-export default class Home extends Component {
+export default class Home extends Base {
   render() {
     return Render.call(this, this.props, this.state);
   }

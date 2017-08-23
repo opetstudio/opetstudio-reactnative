@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react';
 import { Router, Scene } from 'react-native-router-flux';
-import Home from './components/Home';
-import About from './components/About';
+import Home from './components/pages/home/Home';
+import About from './components/pages/about/About';
 
 
 export default class RouterMobile extends Component {
