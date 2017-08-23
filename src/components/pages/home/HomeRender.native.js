@@ -31,8 +31,12 @@ export default function () {
               <Text style={styles.menuText}>About</Text>
           </View>
         </TouchableHighlight>
-        <View style={[styles.box, styles.box2]}></View>
-        <View style={[styles.box, styles.box3]}></View>
+        <View style={[styles.box, styles.box2]}>
+          <Text style={styles.menuText}>SS</Text>
+        </View>
+        <View style={[styles.box, styles.box3]}>
+          <Text style={styles.menuText}>RP</Text>
+        </View>
     </View>
   );
 }
