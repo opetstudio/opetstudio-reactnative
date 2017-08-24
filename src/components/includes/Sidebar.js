@@ -6,7 +6,11 @@ export default class Sidebar extends Component {
   render() {
     return (
       <div>
-        <Link to={'/about'}>About</Link>
+        <ul>
+          <li><Link to={'/'}>Home</Link></li>
+          <li><Link to={'/about'}>About</Link></li>
+          <li><Link to={'/counter'}>Counter</Link></li>
+        </ul>
       </div>
     );
   }

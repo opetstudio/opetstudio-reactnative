@@ -1,17 +1,19 @@
 'use strict';
 import React from 'react';
-
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Header from '../../includes/Header';
+import Sidebar from '../../includes/Sidebar';
+import Footer from '../../includes/Footer';
 
 export default function () {
   return (
-    <div style={styles.content}>
-      <div>
-        <span>Page About Web/Desktop</span>
+    <div>
+      <Header />
+      <Sidebar />
+      <div style={styles.content}>
+          <span>About Page Desktop/Web</span>
       </div>
-      <div>
-        <Link to={'/'}>Home</Link>
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -2,8 +2,9 @@
 
 import { Component } from 'react';
 
-export default class HomeBase extends Component {
+export default class CounterBase extends Component {
   _onPressButton() {
+    this.props.fetchData();
     console.log('_onPressButton invoked');
   }
   _onPressButtonCounter() {
