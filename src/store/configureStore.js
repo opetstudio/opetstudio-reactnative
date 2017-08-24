@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, autoRehydrate } from 'redux-persist';
-
+import { autoRehydrate } from 'redux-persist';
 // import { createHashHistory } from 'history';
-import { routerMiddleware, routerActions } from 'react-router-redux';
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+// import { routerMiddleware, routerActions } from 'react-router-redux';
+import { routerActions } from 'react-router-redux';
+// import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 import thunk from 'redux-thunk';
 
@@ -12,7 +12,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import * as fetchDataActions from '../actions/fetchData';
 
-import type { dataReducerStateType } from '../reducers/dataReducer';
+// import type { dataReducerStateType } from '../reducers/dataReducer';
 
 // export const history = createHashHistory();
 
@@ -20,7 +20,22 @@ const setupMiddleware = function () {
   return [thunk, createLogger({ level: 'info', collapsed: true })];
 };
 
-const configureStore = (initialState?: dataReducerStateType) => {
+type counterStateType = {
+  data: [],
+  dataFetched: false,
+  isFetching: false,
+  error: false
+};
+
+const configureStore = (initialState?: counterStateType) => {
+  // const initialState = {
+  //   data: [],
+  //   dataFetched: false,
+  //   isFetching: false,
+  //   error: false
+  // };
+
+
   // Redux Configuration
   // Thunk Middleware
   // Logging Middleware

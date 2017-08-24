@@ -9,9 +9,10 @@ import { AsyncStorage } from 'react-native';
 // import reducer from './reducers';
 import { configureStore } from './store/configureStore';
 
-import Home from './components/pages/home/Home';
-import About from './components/pages/about/About';
-import CounterPage from './components/pages/counter/Counter';
+import Home from './pages/home/Home';
+import About from './pages/about/About';
+// import CounterPage from './pages/counter/Counter';
+import MemberPage from './pages/member/Member';
 
 const store = configureStore();
 persistStore(store, { storage: AsyncStorage }, () => {
@@ -38,9 +39,9 @@ export default class RouterMobile extends Component {
               title="About"
             />
             <Scene
-              key="counter"
-              component={CounterPage}
-              title="Counter"
+              key="member"
+              component={MemberPage}
+              title="Member"
             />
           </Scene>
         </Router>

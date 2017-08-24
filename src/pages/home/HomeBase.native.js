@@ -8,7 +8,7 @@ export default class HomeBase extends Component {
   _onPressButton() {
     Actions.about();
   }
-  _onPressButtonCounter() {
-    Actions.counter();
+  _onPressButtonMember() {
+    Actions.member();
   }
 }

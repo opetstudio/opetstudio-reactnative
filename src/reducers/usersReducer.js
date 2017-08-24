@@ -12,7 +12,7 @@ const initialState = {
 //   data: []
 // };
 
-const dataReducer = (state = initialState, action: {type: string, data: []}) => {
+const usersReducer = (state = initialState, action: {type: string, data: []}) => {
   // console.log('[reducers/dataReducer.dataReducer] invoked');
   // console.log('[reducers/dataReducer.dataReducer] state=', state);
   // console.log('[reducers/dataReducer.dataReducer] action=', action);
@@ -39,4 +39,4 @@ const dataReducer = (state = initialState, action: {type: string, data: []}) => 
       return state;
   }
 };
-export default dataReducer;
+export default usersReducer;

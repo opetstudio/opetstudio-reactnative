@@ -2,9 +2,9 @@
 import React from 'react';
 // import Screen from './Screen';
 
-import Header from '../../includes/Header';
-import Sidebar from '../../includes/Sidebar';
-import Footer from '../../includes/Footer';
+import Header from '../includes/Header';
+import Sidebar from '../includes/Sidebar';
+import Footer from '../includes/Footer';
 // const logo = require('../img/rayasem-logo-color.png');
 
 export default function () {

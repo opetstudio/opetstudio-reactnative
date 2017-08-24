@@ -31,9 +31,9 @@ export default function () {
               <Text style={styles.menuText}>About</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight onPress={() => { this._onPressButtonCounter(); }}>
+        <TouchableHighlight onPress={() => { this._onPressButtonMember(); }}>
           <View style={[styles.box, styles.box2]}>
-            <Text style={styles.menuText}>Counter</Text>
+            <Text style={styles.menuText}>Member</Text>
           </View>
         </TouchableHighlight>
         <View style={[styles.box, styles.box3]}>

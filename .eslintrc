@@ -1,10 +1,16 @@
 {
   "extends": "rallycoding",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
   "env": {
     "browser": true
   },
   "rules": {
       "camelcase": 0,
-      "no-underscore-dangle": 0
+      "no-underscore-dangle": 0,
+      "react/require-extension": 0
   }
 }

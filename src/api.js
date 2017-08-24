@@ -6,10 +6,8 @@ const people = [
 
 export default () =>
   //hit api
-
-   new Promise((resolve, reject) => {
-    setTimeout(() => {
-      return resolve(people);
-    }, 3000);
+  // new Promise((resolve, reject) => {
+   new Promise((resolve) => {
+    setTimeout(() => resolve(people), 3000);
   })
 ;
