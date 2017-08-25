@@ -1,5 +1,6 @@
 'use strict';
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 import Header from '../includes/Header';
 import Sidebar from '../includes/Sidebar';
 import Footer from '../includes/Footer';
@@ -9,7 +10,7 @@ import UsersContainer from '../../containers/UsersContainer/UsersContainer';
 
 export default function () {
   return (
-    <div>
+    <Container>
       <Header />
       <Sidebar />
       {/* <div style={styles.content}>
@@ -25,7 +26,7 @@ export default function () {
         <UsersContainer />
       </div>
       <Footer />
-    </div>
+    </Container>
   );
 }
 

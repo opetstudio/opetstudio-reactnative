@@ -1,12 +1,13 @@
 'use strict';
 import React, { Component } from 'react';
+import { Header as Head } from 'semantic-ui-react';
 
 export default class Header extends Component {
   render() {
     return (
-      <div>
-        <h1>Header</h1>
-      </div>
+      <Head as='h1'>
+        Header
+      </Head>
     );
   }
 }

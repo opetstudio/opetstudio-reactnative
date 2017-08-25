@@ -1,20 +1,21 @@
 'use strict';
 import React from 'react';
 // import { Link } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import Header from '../includes/Header';
 import Sidebar from '../includes/Sidebar';
 import Footer from '../includes/Footer';
 
 export default function () {
   return (
-    <div>
+    <Container>
       <Header />
       <Sidebar />
       <div style={styles.content}>
           <span>About Page Desktop/Web</span>
       </div>
       <Footer />
-    </div>
+    </Container>
   );
 }
 
