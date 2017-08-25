@@ -1,9 +1,11 @@
 
 Skeleton or Boilerplate project for Mobile native Application, website or web base application, cross platform Desktop Application (Windows, Linux, Mac). All in one Projects. Very Nice..!!!....
 
+
 ### Install
 
   git clone https://github.com/opetstudio/opetstudio-reactnative.git
+
   cd opetstudio-reactnative
 
   npm install
@@ -21,5 +23,5 @@ Skeleton or Boilerplate project for Mobile native Application, website or web ba
   npm run start-web
 
   //on other terminal
-  
+
   npm run electron
