@@ -1,5 +1,3 @@
-'use strict';
-
 import Render from './HomeRender';
 import Base from './HomeBase';
 

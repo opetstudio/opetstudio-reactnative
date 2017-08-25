@@ -15,12 +15,10 @@
     "react-devtools": "react-devtools"
   },
   "dependencies": {
-    "adminlte-reactjs": "^1.0.6",
     "electron": "~1.6.2",
     "eslint-config-rallycoding": "^3.2.0",
     "history": "^4.7.1",
     "lodash": "^4.17.4",
-    "nachos-ui": "^0.1.2",
     "object-assign": "^4.1.1",
     "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.12",
@@ -41,7 +39,7 @@
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
-    "babel-preset-react-native": "3.0.1",
+    "babel-preset-react-native": "^2.1.0",
     "jest": "20.0.4",
     "react-devtools": "^2.5.0",
     "react-scripts": "^1.0.11",
