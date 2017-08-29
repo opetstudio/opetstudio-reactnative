@@ -1,5 +1,13 @@
-import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from '../constants';
+import {
+  FETCHING_DATA,
+  FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE, MODIFICATION_EMAIL } from '../constants';
 import getPeople from '../api';
+
+export function modificationEmail() {
+  return {
+    type: MODIFICATION_EMAIL
+  };
+}
 
 export function getData() {
   return {
