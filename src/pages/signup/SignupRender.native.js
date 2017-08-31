@@ -10,7 +10,6 @@ import {
   // Dimensions,
   Text,
   Image,
-  Button,
   TextInput
 } from 'react-native';
 
@@ -35,14 +34,14 @@ export default function () {
             value={this.props.authenticationReducer.name}
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             placeholder="Name"
-            placeholderTextColor='#FFF'
+            placeholderTextColor='#a9acad'
             onChangeText={text => this.props.modificationName(text)}
           />
           <TextInput
             value={this.props.authenticationReducer.email}
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             placeholder="E-mail"
-            placeholderTextColor='#FFF'
+            placeholderTextColor='#a9acad'
             onChangeText={text => this.props.modificationEmail(text)}
           />
           <TextInput
@@ -50,7 +49,7 @@ export default function () {
             value={this.props.authenticationReducer.password}
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             placeholder="Password"
-            placeholderTextColor='#FFF'
+            placeholderTextColor='#a9acad'
             onChangeText={text => this.props.modificationPassword(text)}
           />
           <Text
@@ -60,7 +59,7 @@ export default function () {
           </Text>
         </View>
         <View style={{ flex: 1 }}>
-            <Button title="Signup" color="#115E54" onPress={() => this._registerUser()} />
+            {this._renderButtonSignup()}
         </View>
       </View>
     </Image>

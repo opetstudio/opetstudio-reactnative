@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Scene, Stack } from 'react-native-router-flux';
+import { Router, Scene, Stack, ActionConst } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { AsyncStorage } from 'react-native';
@@ -10,12 +10,15 @@ import { configureStore } from './store/configureStore';
 
 
 import Home from './pages/home/Home';
+import Homev2 from './pages/homev2/Homev2';
 import About from './pages/about/About';
 import LoginPage from './pages/login/Login';
 import SignupPage from './pages/signup/Signup';
 // import CounterPage from './pages/counter/Counter';
 import MemberPage from './pages/member/Member';
 import WelcomePage from './pages/welcome/Welcome';
+import AddcontactPage from './pages/addcontact/Addcontact';
+import ChatPage from './pages/chat/Chat';
 
 const store = configureStore();
 persistStore(store, { storage: AsyncStorage }, () => {
@@ -39,12 +42,17 @@ export default class RouterMobile extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router sceneStyle={{ paddingTop: 0 }}>
+        <Router
+          sceneStyle={{ paddingTop: 0 }}
+          navigationBarStyle={{ backgroundColor: '#115E54' }}
+          titleStyle={{ color: '#fff' }}
+        >
           <Stack key="root">
             <Scene
               key="welcome"
               component={WelcomePage}
               title="Welcome"
+              hideNavBar
               initial
             />
             <Scene
@@ -56,6 +64,15 @@ export default class RouterMobile extends Component {
               key="login"
               component={LoginPage}
               title="Login"
+              hideNavBar
+              type={ActionConst.RESET}
+            />
+            <Scene
+              key="homev2"
+              component={Homev2}
+              title="Homev2"
+              hideNavBar
+              type={ActionConst.RESET}
             />
             <Scene
               key="home"
@@ -71,6 +88,16 @@ export default class RouterMobile extends Component {
               key="member"
               component={MemberPage}
               title="Member"
+            />
+            <Scene
+              key="addcontact"
+              component={AddcontactPage}
+              title="Add Contact"
+            />
+            <Scene
+              key="chat"
+              component={ChatPage}
+              title="Chat"
             />
           </Stack>
         </Router>

@@ -40,7 +40,7 @@ export default function () {
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             onChangeText={text => this.props.modificationEmail(text)}
             placeholder="E-mail"
-            placeholderTextColor='#FFF'
+            placeholderTextColor='#a9acad'
           />
           <TextInput
             secureTextEntry
@@ -48,8 +48,13 @@ export default function () {
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             onChangeText={text => this.props.modificationPassword(text)}
             placeholder="Password"
-            placeholderTextColor='#FFF'
+            placeholderTextColor='#a9acad'
           />
+          <Text
+            style={{ color: '#ff0000', fontSize: 18 }}
+          >
+            {this.props.authenticationReducer.errorLoginMessage}
+          </Text>
           <TouchableHighlight onPress={() => Actions.signup()}>
             <Text
               style={{ fontSize: 20, height: 45, color: '#fff' }}
@@ -59,7 +64,7 @@ export default function () {
           </TouchableHighlight>
         </View>
         <View style={{ flex: 2 }}>
-            <Button title="Login" color="#115E54" onPress={() => false} />
+            {this._renderButtonLogin()}
         </View>
       </View>
   </Image>
