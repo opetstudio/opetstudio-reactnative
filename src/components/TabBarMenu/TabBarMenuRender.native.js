@@ -35,7 +35,7 @@ export default function () {
               </View>
               <View style={{ justifyContent: 'center' }}>
                 <TouchableHighlight
-                  onPress={() => { firebase.auth().signOut().then(() => Actions.login()); }}
+                  onPress={() => { this.props.logoutUser(); }}
                   underlayColor="#114D44"
                 >
                   <Text style={{ fontSize: 20, color: '#fff' }}>Logout</Text>

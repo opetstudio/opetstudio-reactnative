@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Router, Scene, Stack, ActionConst } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
-import { AsyncStorage } from 'react-native';
+// import { AsyncStorage } from 'react-native';
+import {
+  AsyncStorage,
+  Alert,
+  BackAndroid
+} from 'react-native';
+
 import firebase from 'firebase';
 // import { createStore } from 'redux';
 // import reducer from './reducers';
@@ -17,6 +23,7 @@ import SignupPage from './pages/signup/Signup';
 // import CounterPage from './pages/counter/Counter';
 import MemberPage from './pages/member/Member';
 import WelcomePage from './pages/welcome/Welcome';
+import MainPage from './pages/main/Main';
 import AddcontactPage from './pages/addcontact/Addcontact';
 import ChatPage from './pages/chat/Chat';
 
@@ -30,30 +37,51 @@ persistStore(store, { storage: AsyncStorage }, () => {
 export default class RouterMobile extends Component {
   componentWillMount() {
     // Initialize Firebase
-    firebase.initializeApp({
-      apiKey: 'AIzaSyBRfY8G4OSOapqJPOGzs4j7MaNskvl_CQc',
-      authDomain: 'whatsapp-clone-dd7f3.firebaseapp.com',
-      databaseURL: 'https://whatsapp-clone-dd7f3.firebaseio.com',
-      projectId: 'whatsapp-clone-dd7f3',
-      storageBucket: 'whatsapp-clone-dd7f3.appspot.com',
-      messagingSenderId: '583288508388'
-    });
+    if (!firebase.apps.length) {
+        // firebase.initializeApp({});
+        firebase.initializeApp({
+          apiKey: 'AIzaSyBRfY8G4OSOapqJPOGzs4j7MaNskvl_CQc',
+          authDomain: 'whatsapp-clone-dd7f3.firebaseapp.com',
+          databaseURL: 'https://whatsapp-clone-dd7f3.firebaseio.com',
+          projectId: 'whatsapp-clone-dd7f3',
+          storageBucket: 'whatsapp-clone-dd7f3.appspot.com',
+          messagingSenderId: '583288508388'
+        });
+      }
   }
   render() {
+    const onExitApp = () => {
+      Alert.alert(
+        'Exit',
+        'Are you sure you want to exit this app',
+        [
+          { text: 'Cancel', onPress: () => {} },
+          { text: 'YES', onPress: () => BackAndroid.exitApp() },
+        ]
+      );
+      return true;
+    };
     return (
       <Provider store={store}>
         <Router
+          onExitApp={onExitApp}
           sceneStyle={{ paddingTop: 0 }}
           navigationBarStyle={{ backgroundColor: '#115E54' }}
           titleStyle={{ color: '#fff' }}
         >
           <Stack key="root">
             <Scene
+              key="main"
+              component={MainPage}
+              title="Main"
+              hideNavBar
+              initial
+            />
+            <Scene
               key="welcome"
               component={WelcomePage}
               title="Welcome"
               hideNavBar
-              initial
             />
             <Scene
               key="signup"
@@ -65,14 +93,12 @@ export default class RouterMobile extends Component {
               component={LoginPage}
               title="Login"
               hideNavBar
-              type={ActionConst.RESET}
             />
             <Scene
               key="homev2"
               component={Homev2}
               title="Homev2"
               hideNavBar
-              type={ActionConst.RESET}
             />
             <Scene
               key="home"

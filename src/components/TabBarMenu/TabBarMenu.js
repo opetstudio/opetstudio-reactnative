@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Render from './TabBarMenuRender';
 import * as AppActions from '../../actions/AppActions';
+import * as authenticationAction from '../../actions/AuthenticationActions';
 
 class TabBarMenu extends Component {
   render() {
@@ -13,12 +14,13 @@ class TabBarMenu extends Component {
 
 function mapStateToProps(state) {
   return {
-    appReducer: state.appReducer
+    appReducer: state.appReducer,
+    authenticationReducer: state.authenticationReducer
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(AppActions, dispatch);
+  return bindActionCreators({ ...AppActions, ...authenticationAction }, dispatch);
 
   // return {
   //   fetchData: () => dispatch(fetchData())

@@ -27,5 +27,5 @@ export default function () {
         dataSource={this.state.dataSource}
         renderRow={renderRow}
       />
-  );
+    );
 }

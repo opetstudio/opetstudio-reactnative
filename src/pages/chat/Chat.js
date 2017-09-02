@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 
 import Render from './ChatRender';
@@ -13,6 +15,7 @@ class Chat extends Base {
     const { contactEmail } = this.props;
     this.props.userChatsFetch(contactEmail);
     this.setDataSource(this.props.chats);
+    if (firebase.auth().currentUser == null) Actions.pop();
   }
   componentWillReceiveProps(nextProps) {
     console.log('componentWillReceiveProps==>', nextProps.chats);

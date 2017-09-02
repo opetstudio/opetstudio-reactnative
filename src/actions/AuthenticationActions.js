@@ -15,7 +15,10 @@ import {
   MODIFICATION_LOGIN_PROGRESS_STOP,
   SIGNUP_IN_PROGRESS,
   MODIFICATION_SIGNUP_PROGRESS,
-  RESET_AUTHENTICATION_REDUCER } from '../constants';
+  RESET_AUTHENTICATION_REDUCER,
+  LOGOUT_IN_PROGRESS,
+  LOGOUT_SUCCESS,
+  IS_USER_LOGIN } from '../constants';
 
 export const resetAuthenticationReducer = () => {
   console.log('');
@@ -73,7 +76,7 @@ export function loginProgressStop() {
   };
 }
 
-export function authUser({ email, password }) {
+export function loginUser({ email, password }) {
   return dispatch => {
     dispatch({ type: LOGIN_IN_PROGRESS, payload: true });
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -81,6 +84,15 @@ export function authUser({ email, password }) {
       .catch(error => loginUserError(error, dispatch));
   };
 }
+export function logoutUser() {
+  return dispatch => {
+    dispatch({ type: LOGOUT_IN_PROGRESS });
+    firebase.auth().signOut().then(() => logoutUserSuccess(dispatch));
+  };
+}
+const logoutUserSuccess = dispatch => {
+  dispatch({ type: LOGOUT_SUCCESS });
+};
 
 export function registerUser({ name, email, password }) {
   return (dispatch) => {
@@ -102,11 +114,13 @@ export const isUserLogin = () => {
     const { currentUser } = firebase.auth();
     if (currentUser != null) {
       console.log(`user sedang online ${currentUser.email}`);
-      Actions.homev2({ type: ActionConst.RESET });
+      dispatch({ type: IS_USER_LOGIN, payload: true });
+    //   Actions.homev2({ type: ActionConst.RESET });
     } else {
       console.log('user sedang tidak online');
+      dispatch({ type: IS_USER_LOGIN, payload: false });
+    //   Actions.welcome({ type: ActionConst.RESET });
     }
-    dispatch({ type: 'xxxx', payload: true });
   };
 };
 
@@ -114,7 +128,8 @@ const loginUserSuccess = (dispatch) => {
   dispatch({
     type: LOGIN_USER_SUCCESS
   });
-  Actions.homev2();
+  // Actions.homev2();
+  // Actions.homev2({ type: ActionConst.REPLACE });
 };
 const loginUserError = (error, dispatch) => {
   dispatch({ type: LOGIN_USER_FAILED, payload: error.message });

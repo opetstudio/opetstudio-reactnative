@@ -6,13 +6,14 @@ import {
   Button,
   ActivityIndicator
 } from 'react-native';
+import firebase from 'firebase';
 
 
 export default class SignupBase extends Component {
-  componentWillMount() {
-    this.props.modificationErrorMessage();
-    this.props.modificationSignupProgress(false);
+  _componentWillMount() {
   }
+
+
   _registerUser() {
     const { name, email, password } = this.props.authenticationReducer;
     this.props.registerUser({ name, email, password });

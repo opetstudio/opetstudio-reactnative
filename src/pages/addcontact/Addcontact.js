@@ -1,12 +1,15 @@
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import Render from './AddcontactRender';
 import Base from './AddcontactBase';
 import * as AppActions from '../../actions/AppActions';
 
 class Addcontact extends Base {
   componentWillMount() {
+    if (firebase.auth().currentUser == null) Actions.pop();
     this.props.resetAppReducer();
   }
   render() {

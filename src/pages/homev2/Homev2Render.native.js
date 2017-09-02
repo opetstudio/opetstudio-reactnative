@@ -3,7 +3,7 @@
 'use strict';
 
 import React from 'react';
-
+import firebase from 'firebase';
 import {
   StyleSheet,
   View,
@@ -16,6 +16,7 @@ import { TabViewAnimated, SceneMap } from 'react-native-tab-view';
 import TabBarMenu from '../../components/TabBarMenu/TabBarMenu';
 import ChatsContainer from '../../containers/ChatsContainer/ChatsContainer';
 import ContactsContainer from '../../containers/ContactsContainer/ContactsContainer';
+import LoginComponent from '../../components/Login/Login';
 // import UsersContainer from '../../containers/UsersContainer/UsersContainer';
 
 // import Screen from './Screen';
@@ -37,16 +38,23 @@ const _renderScene = SceneMap({
   });
 
 export default function () {
-  console.log('stateeee===>', this.state);
+  const { currentUser } = firebase.auth();
+  if (currentUser != null) {
+    console.log(`user sedang online ${currentUser.email}`);
+    return (
+      // <View>
+      <TabViewAnimated
+          style={styles.container}
+          navigationState={this.state}
+          renderScene={_renderScene}
+          renderHeader={_renderHeader}
+          onIndexChange={this._handleIndexChange}
+      />
+    );
+  }
+  console.log('user sedang tidak online');
   return (
-    // <View>
-    <TabViewAnimated
-        style={styles.container}
-        navigationState={this.state}
-        renderScene={_renderScene}
-        renderHeader={_renderHeader}
-        onIndexChange={this._handleIndexChange}
-    />
+    <LoginComponent />
   );
 }
 const styles = StyleSheet.create({

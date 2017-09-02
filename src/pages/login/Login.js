@@ -1,15 +1,19 @@
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 // import * as fetchData from '../../actions/fetchData';
 import * as authenticationAction from '../../actions/AuthenticationActions';
 import Render from './LoginRender';
 import Base from './LoginBase';
 
 class Login extends Base {
+  constructor(props) {
+    super(props);
+    console.log('');
+  }
   componentWillMount() {
-    this.props.resetAuthenticationReducer();
-    this.props.isUserLogin();
+    this._componentWillMount();
   }
   render() {
     console.log('Login render');

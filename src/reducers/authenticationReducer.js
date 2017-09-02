@@ -12,7 +12,10 @@ import {
   MODIFICATION_LOGIN_PROGRESS_STOP,
   SIGNUP_IN_PROGRESS,
   MODIFICATION_SIGNUP_PROGRESS,
-  RESET_AUTHENTICATION_REDUCER } from '../constants';
+  RESET_AUTHENTICATION_REDUCER,
+  LOGOUT_IN_PROGRESS,
+  LOGOUT_SUCCESS,
+  IS_USER_LOGIN } from '../constants';
 
 const initialState = {
   name: '',
@@ -21,14 +24,20 @@ const initialState = {
   errorRegisteredMessage: '',
   errorLoginMessage: '',
   loadingLogin: false,
-  loadingSignup: false
+  loadingLogout: false,
+  loadingSignup: false,
+  isUserLogin: false
+  // isLogin: false
 };
 
 const authenticationReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case RESET_AUTHENTICATION_REDUCER:
-      return initialState;
+    return {
+      ...state,
+      initialState
+    };
     case MODIFICATION_EMAIL:
       return {
         ...state,
@@ -58,25 +67,39 @@ const authenticationReducer = (state = initialState, action) => {
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        name: '',
-        password: '',
-        loadingSignup: false
+        initialState
       };
     case LOGIN_USER_FAILED:
         return {
           ...state,
           errorLoginMessage: action.payload,
-          loadingLogin: false
+          loadingLogin: false,
+          isUserLogin: false
         };
     case LOGIN_USER_SUCCESS:
         return {
           ...state,
-          ...initialState
+          initialState
+        };
+    case IS_USER_LOGIN:
+        return {
+          ...state,
+          isUserLogin: action.payload
+        };
+    case LOGOUT_SUCCESS:
+        return {
+          ...state,
+          initialState
         };
     case LOGIN_IN_PROGRESS:
         return {
           ...state,
           loadingLogin: true
+        };
+    case LOGOUT_IN_PROGRESS:
+        return {
+          ...state,
+          loadingLogout: true
         };
     case SIGNUP_IN_PROGRESS:
         return {
