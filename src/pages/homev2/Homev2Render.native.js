@@ -48,7 +48,7 @@ export default function () {
           navigationState={this.state}
           renderScene={_renderScene}
           renderHeader={_renderHeader}
-          onIndexChange={this._handleIndexChange}
+          onIndexChange={this._handleIndexChange.bind(this)}
       />
     );
   }

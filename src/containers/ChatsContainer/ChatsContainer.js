@@ -10,10 +10,10 @@ class ChatsContainer extends Base {
   componentWillMount() {
       this.props.conversationUserFetch();
       this.setDataSource(this.props.conversations);
-      console.log('componentWillMount = ', this.props.conversations);
+      // console.log('componentWillMount = ', this.props.conversations);
   }
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps = ', nextProps.conversations);
+    // console.log('[ChatsContainer.componentWillReceiveProps] ==>', nextProps);
     // if (this.props.contactEmail !== nextProps.contactEmail) {
     //     this.props.userChatsFetch(nextProps.contactEmail);
     // }
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
     console.log('');
     return { ...val, uid };
   });
-  console.log('chatsssss=>', conversations);
+  // console.log('chatsssss=>', conversations);
   return {
     conversations,
     appReducer: state.appReducer

@@ -7,14 +7,21 @@ import Render from './ContactsContainerRender';
 import * as AppActions from '../../actions/AppActions';
 
 class ContactsContainer extends Base {
+  constructor(props) {
+    super(props);
+    this._setDataSource = this._setDataSource.bind(this);
+    // this.state = {
+    //   seconds: 5,
+    // };
+  }
   componentWillMount() {
     this.props.userContactsFetch();
-    this.setDataSource(this.props.contacts);
-    console.log('list contacts via props==>', this.props.contacts);
+    this._setDataSource(this.props.contacts);
+    // console.log('list contacts via props==>', this.props.contacts);
   }
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps==>', nextProps.contacts);
-    this.setDataSource(nextProps.contacts);
+    // console.log('[ContactsContainer.componentWillReceiveProps] ==>', nextProps);
+    this._setDataSource(nextProps.contacts);
   }
   render() {
     return Render.call(this, this.props, this.state);

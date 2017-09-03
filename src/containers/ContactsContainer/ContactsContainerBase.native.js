@@ -5,14 +5,14 @@ import { ListView } from 'react-native';
 
 
 export default class ContactsContainerBase extends Component {
-  setDataSource(contacts) {
+  _setDataSource(contacts) {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    this.setState({
-        dataSource: ds.cloneWithRows(contacts)
-      });
-    // this.state = {
-    //   dataSource: ds.cloneWithRows(contacts)
-    // };
+    // this.setState({
+    //     dataSource: ds.cloneWithRows(contacts)
+    // });
+    this.state = {
+      dataSource: ds.cloneWithRows(contacts)
+    };
   }
   _onPressButton() {
     console.log('_onPressButton invoked');

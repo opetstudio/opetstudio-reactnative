@@ -38,19 +38,19 @@ export default function () {
             onChangeText={text => this.props.modificationName(text)}
           />
           <TextInput
-            value={this.props.authenticationReducer.email}
+            value={this.props.authenticationReducer.signupEmail}
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             placeholder="E-mail"
             placeholderTextColor='#a9acad'
-            onChangeText={text => this.props.modificationEmail(text)}
+            onChangeText={text => this.props.modificationSignupEmail(text)}
           />
           <TextInput
             secureTextEntry
-            value={this.props.authenticationReducer.password}
+            value={this.props.authenticationReducer.signupPassword}
             style={{ fontSize: 20, height: 45, color: '#fff' }}
             placeholder="Password"
             placeholderTextColor='#a9acad'
-            onChangeText={text => this.props.modificationPassword(text)}
+            onChangeText={text => this.props.modificationSignupPassword(text)}
           />
           <Text
             style={{ color: '#ff0000', fontSize: 18 }}

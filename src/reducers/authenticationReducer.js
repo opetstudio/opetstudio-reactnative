@@ -15,17 +15,31 @@ import {
   RESET_AUTHENTICATION_REDUCER,
   LOGOUT_IN_PROGRESS,
   LOGOUT_SUCCESS,
-  IS_USER_LOGIN } from '../constants';
+  IS_USER_LOGIN,
+  MODIFICATION_SIGNUP_EMAIL,
+  MODIFICATION_SIGNUP_PASSWORD,
+  RESET_SIGNUP_FORM,
+  RESET_LOGIN_FORM } from '../constants';
 
-const initialState = {
+const initialSignupState = {
   name: '',
+  signupEmail: '',
+  signupPassword: '',
+  errorRegisteredMessage: '',
+  loadingSignup: false,
+};
+
+const initialLoginState = {
   email: '',
   password: '',
-  errorRegisteredMessage: '',
   errorLoginMessage: '',
   loadingLogin: false,
+};
+
+const initialState = {
+  ...initialSignupState,
+  ...initialLoginState,
   loadingLogout: false,
-  loadingSignup: false,
   isUserLogin: false
   // isLogin: false
 };
@@ -34,10 +48,28 @@ const authenticationReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case RESET_AUTHENTICATION_REDUCER:
+    return initialState;
+
+    case RESET_SIGNUP_FORM:
     return {
       ...state,
-      initialState
+      ...initialSignupState
     };
+    case RESET_LOGIN_FORM:
+    return {
+      ...state,
+      ...initialLoginState
+    };
+    case MODIFICATION_SIGNUP_EMAIL:
+      return {
+        ...state,
+        signupEmail: action.payload
+      };
+    case MODIFICATION_SIGNUP_PASSWORD:
+      return {
+        ...state,
+        signupPassword: action.payload
+      };
     case MODIFICATION_EMAIL:
       return {
         ...state,
@@ -79,7 +111,7 @@ const authenticationReducer = (state = initialState, action) => {
     case LOGIN_USER_SUCCESS:
         return {
           ...state,
-          initialState
+          ...initialState
         };
     case IS_USER_LOGIN:
         return {
@@ -89,7 +121,7 @@ const authenticationReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS:
         return {
           ...state,
-          initialState
+          ...initialState
         };
     case LOGIN_IN_PROGRESS:
         return {

@@ -9,6 +9,8 @@ import listContactsReducer from './listContactsReducer';
 import listChattingReducer from './listChattingReducer';
 import listChatsReducer from './listChatsReducer';
 
+import listNotificationsReducer from './listNotificationsReducer';
+
 const rootReducer = combineReducers({
   appReducer,
   dataReducer,
@@ -17,6 +19,7 @@ const rootReducer = combineReducers({
   listContactsReducer,
   listChattingReducer,
   listChatsReducer,
+  listNotificationsReducer,
   router
 });
 export default rootReducer;

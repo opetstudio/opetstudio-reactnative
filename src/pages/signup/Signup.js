@@ -11,7 +11,7 @@ import Base from './SignupBase';
 class Signup extends Base {
   componentWillMount() {
       if (firebase.auth().currentUser != null) Actions.pop();
-      this.props.resetAuthenticationReducer();
+      this.props.resetSignupForm();
       this._componentWillMount();
   }
   render() {

@@ -18,7 +18,11 @@ import {
   RESET_AUTHENTICATION_REDUCER,
   LOGOUT_IN_PROGRESS,
   LOGOUT_SUCCESS,
-  IS_USER_LOGIN } from '../constants';
+  IS_USER_LOGIN,
+  RESET_LOGIN_FORM,
+  RESET_SIGNUP_FORM,
+  MODIFICATION_SIGNUP_EMAIL,
+  MODIFICATION_SIGNUP_PASSWORD } from '../constants';
 
 export const resetAuthenticationReducer = () => {
   console.log('');
@@ -26,6 +30,33 @@ export const resetAuthenticationReducer = () => {
     type: RESET_AUTHENTICATION_REDUCER
   };
 };
+export const resetLoginForm = () => {
+  console.log('');
+  return {
+    type: RESET_LOGIN_FORM
+  };
+};
+export const resetSignupForm = () => {
+  console.log('');
+  return {
+    type: RESET_SIGNUP_FORM
+  };
+};
+
+export function modificationSignupEmail(text) {
+  console.log(text);
+  return {
+    type: MODIFICATION_SIGNUP_EMAIL,
+    payload: text
+  };
+}
+export function modificationSignupPassword(text) {
+  console.log(text);
+  return {
+    type: MODIFICATION_SIGNUP_PASSWORD,
+    payload: text
+  };
+}
 
 export function modificationEmail(text) {
   console.log(text);
@@ -42,6 +73,7 @@ export function modificationPassword(text) {
     payload: text
   };
 }
+
 
 export function modificationName(text) {
   console.log(text);
@@ -94,12 +126,12 @@ const logoutUserSuccess = dispatch => {
   dispatch({ type: LOGOUT_SUCCESS });
 };
 
-export function registerUser({ name, email, password }) {
+export function registerUser({ name, signupEmail, signupPassword }) {
   return (dispatch) => {
     dispatch({ type: SIGNUP_IN_PROGRESS });
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(signupEmail, signupPassword)
     .then(user => {
-      const emailB64 = b64.encode(email);
+      const emailB64 = b64.encode(signupEmail);
       firebase.database().ref(`/contacts/${emailB64}`)
       .push({ name })
       .then(value => registerUserSuccess(dispatch));

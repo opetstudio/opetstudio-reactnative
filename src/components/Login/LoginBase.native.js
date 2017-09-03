@@ -78,7 +78,7 @@ export default class LoginBase extends Component {
         <View style={{ flex: 1, padding: 10 }}>
           <StatusBar backgroundColor="#114D44" />
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clone</Text>
+            <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clonessss</Text>
           </View>
           <View style={{ flex: 2 }}>
             <TextInput
@@ -107,7 +107,7 @@ export default class LoginBase extends Component {
               <Text
                 style={{ fontSize: 20, height: 45, color: '#fff' }}
               >
-                Belum punya akun? klik daftar
+                Belum punya akun? daftar
               </Text>
             </TouchableHighlight>
           </View>

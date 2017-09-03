@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import firebase from 'firebase';
+import PushNotification from 'react-native-push-notification';
 // import { createStore } from 'redux';
 // import reducer from './reducers';
 import { configureStore } from './store/configureStore';
@@ -38,16 +39,21 @@ export default class RouterMobile extends Component {
   componentWillMount() {
     // Initialize Firebase
     if (!firebase.apps.length) {
-        // firebase.initializeApp({});
-        firebase.initializeApp({
-          apiKey: 'AIzaSyBRfY8G4OSOapqJPOGzs4j7MaNskvl_CQc',
-          authDomain: 'whatsapp-clone-dd7f3.firebaseapp.com',
-          databaseURL: 'https://whatsapp-clone-dd7f3.firebaseio.com',
-          projectId: 'whatsapp-clone-dd7f3',
-          storageBucket: 'whatsapp-clone-dd7f3.appspot.com',
-          messagingSenderId: '583288508388'
-        });
+      // firebase.initializeApp({});
+      firebase.initializeApp({
+        apiKey: 'AIzaSyBRfY8G4OSOapqJPOGzs4j7MaNskvl_CQc',
+        authDomain: 'whatsapp-clone-dd7f3.firebaseapp.com',
+        databaseURL: 'https://whatsapp-clone-dd7f3.firebaseio.com',
+        projectId: 'whatsapp-clone-dd7f3',
+        storageBucket: 'whatsapp-clone-dd7f3.appspot.com',
+        messagingSenderId: '583288508388'
+      });
+    }
+    PushNotification.configure({
+      onNotification: notification => {
+        console.log('notification', notification);
       }
+    });
   }
   render() {
     const onExitApp = () => {

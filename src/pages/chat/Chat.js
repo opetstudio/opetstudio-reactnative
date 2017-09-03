@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
+import PushNotification from 'react-native-push-notification';
 
 import Render from './ChatRender';
 import Base from './ChatBase';
@@ -10,16 +11,37 @@ import Base from './ChatBase';
 import * as AppActions from '../../actions/AppActions';
 
 class Chat extends Base {
+  constructor(props) {
+    super(props);
+    console.log('');
+    this.listHeight = 0;
+    this.footerY = 0;
+  }
+
   componentWillMount() {
     console.log('Chat.componentWillMount invoked');
+    // Set up our two placeholder values.
+    this.setState({
+      lastRowY: 0,
+      listHeight: 0,
+      footerY: 0,
+      dataSource: []
+    });
+    console.log('constructor ssssssstaaaatttteeeeeeee======>>>>', this.state);
     const { contactEmail } = this.props;
     this.props.userChatsFetch(contactEmail);
     this.setDataSource(this.props.chats);
     if (firebase.auth().currentUser == null) Actions.pop();
+    this._componentWillMount();
   }
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps==>', nextProps.chats);
+    console.log('[Chat.componentWillReceiveProps] ==>', nextProps);
+    // alert('page/chat receive props');
     if (this.props.contactEmail !== nextProps.contactEmail) {
+      PushNotification.localNotification({
+        title: 'Whatsapp Clone',
+        message: 'ada message baru'
+      });
         this.props.userChatsFetch(nextProps.contactEmail);
     }
     this.setDataSource(nextProps.chats);
@@ -29,6 +51,7 @@ class Chat extends Base {
     const message = this.props.appReducer.message;
     const { contactName, contactEmail } = this.props;
     this.props.sendMessage(message, contactName, contactEmail);
+    // this.props.pushNotification({title: `new message from ${}`})
   }
   render() {
     return Render.call(this, this.props, this.state);
@@ -37,10 +60,11 @@ class Chat extends Base {
 
 function mapStateToProps(state) {
   const chats = _.map(state.listChattingReducer, (val, uid) => {
-    console.log('val ===> ', val);
+    console.log('');
+    // console.log('val ===> ', val);
     return { ...val, uid };
   });
-  console.log('chatsssss=>', chats);
+  // console.log('chatsssss=>', chats);
   return {
     chats,
     appReducer: state.appReducer

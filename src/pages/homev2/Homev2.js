@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import _ from 'lodash';
+import firebase from 'firebase';
+import PushNotification from 'react-native-push-notification';
+import { View, Text, StyleSheet, Picker, AppState, Platform } from 'react-native';
+
 import * as authenticationAction from '../../actions/AuthenticationActions';
+import * as AppActions from '../../actions/AppActions';
 import Render from './Homev2Render';
 import Base from './Homev2Base';
 
@@ -12,24 +18,102 @@ class Homev2 extends Base {
       { key: '2', title: 'Contacts' },
     ],
   };
-  componentWillMount() {
-    this._componentWillMount();
+  constructor(props) {
+    console.log('[Homev2.constructor]');
+    super(props);
+    this._handleAppStateChange = this._handleAppStateChange.bind(this);
+    this._handleIndexChange = this._handleIndexChange.bind(this);
+    // this.state = {
+    //   seconds: 5,
+    // };
   }
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+  }
+  componentWillUnmount() {
+    console.log('[Homev2.componentWillUnmount]');
+    AppState.removeEventListener('change', this._handleAppStateChange);
+  }
+  componentWillMount() {
+    console.log('[Homev2.componentWillMount]');
+    // this.props.AppActions.userChatsFetch(nextProps.contactEmail);
+    // this.props.resetAuthenticationReducer();
+    // this._setListenToChat();
+    this._componentWillMount();
+    this.props.listenToNotification();
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('[Homev2.componentWillReceiveProps] ==>', nextProps);
+    // alert('propssssss');
+    // this._setListenToChat();
+    // this.props.listenToNotification();
+  }
+  _handleAppStateChange(appState) {
+      // console.log(`_handleAppStateChange ${appState}`);
+      // const { currentUser } = firebase.auth();
+      // if (currentUser !== null) {
+      //   const message = {
+      //     title: 'app change state',
+      //     content: `${currentUser.email}  change state to ${appState}`
+      //   };
+      //   this.props.pushNotification(message);
+      // }
+    if (appState === 'background') {
+      let date = new Date(Date.now() + (1 * 1000));
 
-  _handleIndexChange = index => this.setState({ index });
+      // if (Platform.OS === 'ios') {
+      //   date = date.toISOString();
+      // }
+
+      // PushNotification.localNotificationSchedule({
+      //   message: "My Notification Message",
+      //   date,
+      // });
+    } else {
+      //push notif
+    }
+  }
+  // _setListenToChat() {
+  //   console.log('daftar contacts ', this.props.contacts);
+  //   const self = this;
+  //   if (firebase.auth().currentUser != null) {
+  //     this.props.contacts.forEach((v) => {
+  //       self.props.userChatsFetch(v.email);
+  //     });
+  //   }
+  // }
+  _handleIndexChange(index) {
+    this.setState({ index });
+  }
   render() {
     return Render.call(this, this.props, this.state);
   }
 }
 
 function mapStateToProps(state) {
+  // const contacts = _.map(state.listContactsReducer, (val, uid) => {
+  //   console.log('');
+  //   return { ...val, uid };
+  // });
+  // const chats = _.map(state.listChattingReducer, (val, uid) => {
+  //   console.log('');
+  //   // console.log('val ===> ', val);
+  //   return { ...val, uid };
+  // });
+  const notifications = _.map(state.listNotificationsReducer, (val, uid) => {
+    console.log('');
+    // console.log('val ===> ', val);
+    return { ...val, uid };
+  });
   return {
-    authenticationReducer: state.authenticationReducer
+    notifications,
+    authenticationReducer: state.authenticationReducer,
+    appReducer: state.appReducer
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(authenticationAction, dispatch);
+  return bindActionCreators({ ...authenticationAction, ...AppActions }, dispatch);
 
   // return {
   //   fetchData: () => dispatch(fetchData())

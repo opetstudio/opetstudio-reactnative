@@ -30,7 +30,9 @@ const sendMsgIcon = require('../../img/send-msg.png');
 function renderRow(data) {
   if (data.type === 's') {
     return (
-      <View style={{ alignItems: 'flex-end', marginTop: 5, marginBottom: 5, marginLeft: 40 }}>
+      <View
+        style={{ alignItems: 'flex-end', marginTop: 5, marginBottom: 5, marginLeft: 40 }}
+      >
         <Text
           style={{
             fontSize: 18,
@@ -69,8 +71,11 @@ export default function () {
     <View style={{ flex: 1, marginTop: 50, backgroundColor: '#eee4dc', padding: 10 }}>
       <View style={{ flex: 1, paddingBottom: 20 }}>
         <ListView
+          ref='listView'
           enableEmptySections
           dataSource={this.state.dataSource}
+          onLayout={this._onLayout}
+          renderFooter={this._renderFooter}
           renderRow={renderRow}
         />
       </View>

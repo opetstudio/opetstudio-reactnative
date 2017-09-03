@@ -14,11 +14,11 @@ class Login extends Base {
   }
   componentWillMount() {
     console.log('[LoginBase.componentWillMount] invoked');
+    this.props.resetLoginForm();
     this.setState({
       section: 1
     });
     this.props.loginProgressStop();
-    this.props.resetAuthenticationReducer();
     this._componentWillMount();
   }
   render() {
