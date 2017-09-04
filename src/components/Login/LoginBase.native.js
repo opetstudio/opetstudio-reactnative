@@ -78,7 +78,7 @@ export default class LoginBase extends Component {
         <View style={{ flex: 1, padding: 10 }}>
           <StatusBar backgroundColor="#114D44" />
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clonessss</Text>
+            <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clone</Text>
           </View>
           <View style={{ flex: 2 }}>
             <TextInput
