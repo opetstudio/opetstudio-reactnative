@@ -27,7 +27,7 @@ class Chat extends Base {
       footerY: 0,
       dataSource: []
     });
-    console.log('constructor ssssssstaaaatttteeeeeeee======>>>>', this.state);
+    // console.log('constructor ssssssstaaaatttteeeeeeee======>>>>', this.state);
     const { contactEmail } = this.props;
     this.props.userChatsFetch(contactEmail);
     this.setDataSource(this.props.chats);
@@ -38,19 +38,25 @@ class Chat extends Base {
     console.log('[Chat.componentWillReceiveProps] ==>', nextProps);
     // alert('page/chat receive props');
     if (this.props.contactEmail !== nextProps.contactEmail) {
-      PushNotification.localNotification({
-        title: 'Whatsapp Clone',
-        message: 'ada message baru'
-      });
+      // PushNotification.localNotification({
+      //   title: 'Whatsapp Clone',
+      //   message: 'ada message baru'
+      // });
         this.props.userChatsFetch(nextProps.contactEmail);
     }
     this.setDataSource(nextProps.chats);
   }
   _sendMessage() {
-    console.log('=>this.props=', this.props);
+    // console.log('=>this.props=', this.props);
     const message = this.props.appReducer.message;
     const { contactName, contactEmail } = this.props;
+    this.props.resetAppReducer();
+    console.log('sebelum kirim message');
+    const startTime = new Date().getTime();
     this.props.sendMessage(message, contactName, contactEmail);
+    const endTime = new Date().getTime();
+    const difTime = endTime - startTime;
+    console.log(`sesudah kirim message diftime=${difTime}`);
     // this.props.pushNotification({title: `new message from ${}`})
   }
   render() {

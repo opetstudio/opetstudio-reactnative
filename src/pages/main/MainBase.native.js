@@ -13,11 +13,11 @@ export default class MainBase extends Component {
     setTimeout(() => {
       console.log('setTimeout');
       Actions.homev2();
-    }, 500);
+    }, 400);
   }
   _gotoHomePage() {
     console.log('MainBase._gotoHomePage invoked');
-    Actions.homev2({ type: ActionConst.RESET });
+    // Actions.homev2({ type: ActionConst.RESET });
   }
   _gotoLoginPage() {
     Actions.welcome();

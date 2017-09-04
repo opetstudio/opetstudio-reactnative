@@ -19,7 +19,7 @@ import { configureStore } from './store/configureStore';
 import Home from './pages/home/Home';
 import Homev2 from './pages/homev2/Homev2';
 import About from './pages/about/About';
-import LoginPage from './pages/login/Login';
+
 import SignupPage from './pages/signup/Signup';
 // import CounterPage from './pages/counter/Counter';
 import MemberPage from './pages/member/Member';
@@ -93,12 +93,6 @@ export default class RouterMobile extends Component {
               key="signup"
               component={SignupPage}
               title="Signup"
-            />
-            <Scene
-              key="login"
-              component={LoginPage}
-              title="Login"
-              hideNavBar
             />
             <Scene
               key="homev2"

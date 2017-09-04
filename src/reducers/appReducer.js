@@ -54,7 +54,10 @@ export default (state = INITIAL_STATE, action) => {
         account_result_include: action.payload
       };
     case RESET_APP_REDUCER:
-      return INITIAL_STATE;
+      return {
+        ...state,
+        ...INITIAL_STATE
+      };
     default:
       return state;
   }

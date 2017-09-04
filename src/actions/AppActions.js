@@ -65,19 +65,19 @@ export const sendMessage = (message, contactName, contactEmail) => {
     firebase.database().ref(`/messages/${userEmailB64}/${contactEmailB64}`)
       .push({ message, type: 's', sender_email: userEmail, receiver_email: contactEmail })
       .then(() => {
-          console.log('after send message sender');
+          console.log('status message sent');
           firebase.database().ref(`/messages/${contactEmailB64}/${userEmailB64}`)
             .push({ message, type: 'r', sender_email: userEmail, receiver_email: contactEmail })
             .then(() => {
-              console.log('after send message receiver');
+              console.log('status message receive');
               pushFirebaseNotification({
                 title: 'new message',
                 content: `${userEmail}: ${message}`,
                 toEmail: contactEmail
               }, () => {
                 console.log('after pushNotification');
-                dispatch({ type: SEND_MESSAGE_SUCCESS });
               });
+              dispatch({ type: SEND_MESSAGE_SUCCESS });
             });
       })
       .then(() => {
