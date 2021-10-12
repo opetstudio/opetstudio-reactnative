@@ -18,7 +18,7 @@
   "dependencies": {
     "@shoutem/ui": "^0.21.3",
     "base-64": "^0.1.0",
-    "electron": "~1.6.2",
+    "electron": "~11.5.0",
     "eslint-config-rallycoding": "^3.2.0",
     "firebase": "^4.3.0",
     "history": "^4.7.1",
